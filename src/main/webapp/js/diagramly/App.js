@@ -4740,6 +4740,33 @@ App.prototype.saveLibrary = function(name, images, file, mode, noSpin, noReload,
 };
 
 /**
+ * Saves the current diagram to a custom backend API,
+ * bypassing the vendor selection dialog entirely.
+ * forceDialog: true = "Save As" (always ask for filename), false = "Save"
+ */
+App.prototype.saveToMyBackend = function(forceDialog)
+{
+	var file = this.getCurrentFile();
+
+	// Get diagram XML
+	var xml = this.getFileData(true);
+
+	// Get filename — prompt only for Save As or when file has no title yet
+	var filename = (file != null && !forceDialog && file.getTitle() != null)
+		? file.getTitle()
+		: prompt('Filename:', (file != null && file.getTitle() != null)
+			? file.getTitle()
+			: this.defaultFilename);
+
+	if (!filename || filename.trim().length === 0)
+	{
+		return; // user cancelled
+	}
+
+	alert('saveToMyBackend called!\n\nFilename: ' + filename + '\n\nXML preview:\n' + xml.substring(0, 200) + '...');
+};
+
+/**
  * Adds the label menu items to the given menu and parent.
  */
 App.prototype.saveFile = function(forceDialog, success)

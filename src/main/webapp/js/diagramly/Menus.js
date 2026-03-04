@@ -4753,7 +4753,7 @@
 				editorUi.menus.addSubmenu('openRecent', menu, parent);
 				editorUi.menus.addMenuItems(menu,
 					['-', 'synchronize', 'properties', '-',
-					'save', 'saveAs', '-'], parent);
+					'save', '-'], parent);
 			}
 			else if (editorUi.mode == App.MODE_ATLAS)
 			{
@@ -4909,7 +4909,7 @@
 			}
 			else
 			{
-				editorUi.menus.addMenuItems(menu, ['save', 'saveAs', '-', 'rename'], parent);
+				editorUi.menus.addMenuItems(menu, ['save', '-', 'rename'], parent);
 				this.addMenuItems(menu, [(editorUi.isOfflineApp()) ? 'upload' : 'makeCopy'], parent);
 			}
 			
@@ -4986,11 +4986,6 @@
 				
 				menu.addSeparator(parent);
 				editorUi.menus.addMenuItems(menu, ['-', 'save'], parent);
-
-				if (file == null || file.constructor != DriveFile)
-				{
-					editorUi.menus.addMenuItems(menu, ['saveAs'], parent);
-				}
 
 				if (!mxClient.IS_CHROMEAPP && !EditorUi.isElectronApp &&
 					file != null && (file.constructor != LocalFile ||
@@ -5141,7 +5136,7 @@
 						}
 					}
 					
-					this.addMenuItems(menu, ['-', 'save', 'saveAs', '-'], parent);
+					this.addMenuItems(menu, ['-', 'save', '-'], parent);
 					
 					if (!mxClient.IS_CHROMEAPP && !EditorUi.isElectronApp &&
 						editorUi.getServiceName() == 'draw.io' &&
