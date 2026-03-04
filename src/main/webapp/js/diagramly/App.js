@@ -4763,7 +4763,9 @@ App.prototype.saveToMyBackend = function(forceDialog)
 		return; // user cancelled
 	}
 
-	alert('saveToMyBackend called!\n\nFilename: ' + filename + '\n\nXML preview:\n' + xml.substring(0, 200) + '...');
+	alert('Orthogonal calling saveToMyBackend() , please check console log!\n\nFilename: ' + filename );
+        console.log("=====Filename =====:", filename);
+        console.log("=====XML content =====:", xml);
 };
 
 /**
